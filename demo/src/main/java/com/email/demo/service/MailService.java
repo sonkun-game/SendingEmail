@@ -2,13 +2,14 @@ package com.email.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.mail.MailSendingMessageHandler;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 @Configuration
 public class MailService {
-    //@Autowired
+    @Autowired
     private JavaMailSender javaMailSender;
 
     @Autowired
@@ -22,6 +23,10 @@ public class MailService {
         mail.setSubject(subject);
         mail.setText(content);
         javaMailSender.send(mail);
-
     }
+
+    public void sendMailHandler() {
+        MailSendingMessageHandler mailSendingHandler = new MailSendingMessageHandler(javaMailSender);
+    }
+
 }
