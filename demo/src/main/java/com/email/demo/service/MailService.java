@@ -25,8 +25,4 @@ public class MailService {
         javaMailSender.send(mail);
     }
 
-    public void sendMailHandler() {
-        MailSendingMessageHandler mailSendingHandler = new MailSendingMessageHandler(javaMailSender);
-    }
-
 }
